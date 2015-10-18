@@ -1,3 +1,9 @@
+/*
+  ID:
+  PROG: money
+  LANG: Go
+*/
+
 package main
 
 import (
