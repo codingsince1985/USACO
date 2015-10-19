@@ -47,8 +47,7 @@ func calculate() int {
 
 func output(count int) {
 	out, _ := os.Create("subset.out")
-	fmt.Fprintf(
-		out, "%d\n", count)
+	fmt.Fprintf(out, "%d\n", count)
 }
 
 func main() {
