@@ -1,3 +1,9 @@
+/*
+  ID:
+  PROG: zerosum
+  LANG: Go
+*/
+
 package main
 
 import (
@@ -9,8 +15,8 @@ import (
 var N int
 
 type Node struct {
-	n, sum, num, sign int
-	exp               string
+	n, sum, nextNum, sign int
+	exp                   string
 
 }
 
@@ -25,7 +31,7 @@ func input() {
 func dfs(node Node) {
 	//	fmt.Println(node)
 	if node.n == N {
-		if node.sum + node.sign * node.num == 0 {
+		if node.sum + node.sign * node.nextNum == 0 {
 			fmt.Fprintf(out, "%s\n", node.exp)
 		}
 		return
@@ -34,27 +40,27 @@ func dfs(node Node) {
 	dfs(Node{
 		n: node.n + 1,
 		sum: node.sum,
-		num: node.num * 10 + node.n + 1,
+		nextNum: node.nextNum * 10 + node.n + 1,
 		sign: node.sign,
 		exp: node.exp + " " + strconv.Itoa(node.n + 1),
 	})
 	dfs(Node{
-		n:node.n + 1,
-		sum:node.sum + node.sign * node.num,
-		num:node.n + 1,
-		sign:1,
-		exp:node.exp + "+" + strconv.Itoa(node.n + 1),
+		n: node.n + 1,
+		sum: node.sum + node.sign * node.nextNum,
+		nextNum: node.n + 1,
+		sign: 1,
+		exp: node.exp + "+" + strconv.Itoa(node.n + 1),
 	})
 	dfs(Node{
-		n:node.n + 1,
-		sum:node.sum + node.sign * node.num,
-		num:node.n + 1,
-		sign:-1,
-		exp:node.exp + "-" + strconv.Itoa(node.n + 1),
+		n: node.n + 1,
+		sum: node.sum + node.sign * node.nextNum,
+		nextNum: node.n + 1,
+		sign: -1,
+		exp: node.exp + "-" + strconv.Itoa(node.n + 1),
 	})
 }
 
 func main() {
 	input()
-	dfs(Node{n:1, sum:0, num:1, sign:1, exp:"1"})
+	dfs(Node{n:1, sum:0, nextNum:1, sign:1, exp:"1"})
 }
