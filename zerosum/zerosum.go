@@ -22,7 +22,7 @@ type Node struct {
 
 var out *os.File
 
-func input() {
+func prepare() {
 	in, _ := os.Open("zerosum.in")
 	fmt.Fscanf(in, "%d", &N)
 	out, _ = os.Create("zerosum.out")
@@ -61,6 +61,6 @@ func dfs(node Node) {
 }
 
 func main() {
-	input()
+	prepare()
 	dfs(Node{n:1, sum:0, nextNum:1, sign:1, exp:"1"})
 }
