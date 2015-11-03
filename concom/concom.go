@@ -58,7 +58,6 @@ func process(company int) {
 		c[i] += control[company][i]
 		if c[i] >= 50 {
 			process(i)
-
 		}
 	}
 }
