@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 3.2 - Factorials
+
 package main
 
 import (

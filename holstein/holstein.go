@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 2.1 - Healthy Holsteins
+
 package main
 
 import (

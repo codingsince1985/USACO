@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 2.3 - Zero Sum
+
 package main
 
 import (
@@ -25,7 +27,7 @@ var out *os.File
 func prepare() {
 	in, _ := os.Open("zerosum.in")
 	fmt.Fscanf(in, "%d", &N)
-	out, _ = os.Create("zerosum.out")
+	in.Close()
 }
 
 func dfs(node Node) {
@@ -62,5 +64,7 @@ func dfs(node Node) {
 
 func main() {
 	prepare()
+	out, _ = os.Create("zerosum.out")
 	dfs(Node{n:1, sum:0, nextNum:1, sign:1, exp:"1"})
+	out.Close()
 }

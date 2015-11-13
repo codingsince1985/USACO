@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 2.2 - Subset Sums
+
 package main
 
 import (
@@ -18,6 +20,7 @@ var N int
 func input() {
 	in, _ := os.Open("subset.in")
 	fmt.Fscanf(in, "%d", &N)
+	in.Close()
 }
 
 func calculate() int {
@@ -48,6 +51,7 @@ func calculate() int {
 func output(count int) {
 	out, _ := os.Create("subset.out")
 	fmt.Fprintf(out, "%d\n", count)
+	out.Close()
 }
 
 func main() {

@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 2.3 - Controlling Companies
+
 package main
 
 import (
@@ -27,8 +29,7 @@ func prepare() {
 		fmt.Fscanf(in, "%d %d %d", &c1, &c2, &pt)
 		control[c1][c2] = pt
 	}
-
-	out, _ = os.Create("concom.out")
+	in.Close()
 
 	//	fmt.Println(N)
 	//	for i := 1; i <= N; i++ {
@@ -71,11 +72,13 @@ func print(company int) {
 }
 
 func do() {
+	out, _ = os.Create("concom.out")
 	for i := 1; i <= N; i++ {
 		initialize()
 		process(i)
 		print(i)
 	}
+	out.Close()
 }
 
 func main() {

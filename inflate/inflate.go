@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 3.1 - Score Inflation
+
 package main
 
 import (

@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 2.3 - Money Systems
+
 package main
 
 import (
@@ -22,6 +24,7 @@ func input() {
 	for i := 1; i <= V; i++ {
 		fmt.Fscanf(in, "%d", &coins[i])
 	}
+	in.Close()
 }
 
 func compute() {
@@ -39,5 +42,7 @@ func main() {
 	input()
 	//	fmt.Println(V, N, coins)
 	compute()
-	fmt.Println(c[N])
+	out, _ := os.Create("money.out")
+	fmt.Fprintln(out, c[N])
+	out.Close()
 }

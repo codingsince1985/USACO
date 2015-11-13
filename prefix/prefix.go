@@ -4,6 +4,8 @@
   LANG: Go
 */
 
+// USACO Section 2.3 - The Longest Prefix
+
 package main
 
 import (
@@ -36,6 +38,7 @@ func input() {
 		}
 	}
 	//	fmt.Println(S)
+	in.Close()
 }
 
 func compute() {
@@ -64,5 +67,7 @@ func compute() {
 func main() {
 	input()
 	compute()
-	fmt.Println(d[0])
+	out, _ := os.Create("prefix.out")
+	fmt.Fprintln(out, d[0])
+	out.Close()
 }
