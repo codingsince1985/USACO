@@ -13,7 +13,10 @@ import (
 	"os"
 )
 
-func sum(a []int) int {
+var a []int
+var c [101][101]int
+
+func sum() int {
 	t := 0
 	for _, v := range a {
 		t += v
@@ -28,12 +31,16 @@ func min(a, b int) int {
 	return a
 }
 
-func solve(a []int) int {
-	l := len(a)
-	if l == 1 {
-		return a[0]
+func solve(l, r, s int) int {
+	if c[l][r] != 0 {
+		return c[l][r]
+	}
+	if l + 1 == r {
+		c[l][r] = a[l]
+		return c[l][r]
 	} else {
-		return sum(a) - min(solve(a[1:]), solve(a[:l - 1]))
+		c[l][r] = s - min(solve(l + 1, r, s - a[l]), solve(l, r - 1, s - a[r - 1]))
+		return c[l][r]
 	}
 }
 
@@ -45,10 +52,12 @@ func main() {
 
 	var n int
 	fmt.Fscanf(in, "%d", &n)
-	a := make([]int, n)
+	a = make([]int, n)
 	for i := 0; i < n; i++ {
 		fmt.Fscanf(in, "%d", &a[i])
 	}
-	f := solve(a)
-	fmt.Fprintln(out, f, sum(a) - f)
+
+	s := sum()
+	f := solve(0, n, s)
+	fmt.Fprintln(out, f, s - f)
 }
